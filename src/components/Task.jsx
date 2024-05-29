@@ -8,7 +8,12 @@ import 'moment/locale/pt-br'
 
 export default props => {
 
-const today = moment().locale('pt-br').subtract(10, 'days').calendar();
+    const tarefaConcluidaNao = props.concluidaEm != null ?
+    { textDecorationLine: 'line-through'} : {}
+
+    const date = props.concluidaEm ? props.concluidaEm : props.dataEstimada
+
+    const today = moment().locale('pt-br').subtract(10, 'days').calendar();
 
     return (
         <View style={style.container}>
@@ -16,24 +21,26 @@ const today = moment().locale('pt-br').subtract(10, 'days').calendar();
                 {getCheckView(props.concluidaEm)}
             </View>
 
-                <Text style={[style.descricao]}>{props.descricao}</Text>
+                <View>
+                <Text style={[style.descricao, tarefaConcluidaNao]}>{props.descricao}</Text>
                 <Text style={style.date}>{today}</Text>
+                </View>
            
            
         </View>
     )
 }
 function getCheckView(concluidaEm) {
-    if (concluidaEm != null) {
+    if (concluidaEm != false) {
         return (
             <View style={style.dataEstimada}>
-                <Icon name='check' size={20} color='#FFF'/>
+                <Icon name='check' size={20} color='black'/>
             </View>
         )
-    } else {
+    } else { (concluidaEm != true)
         return (
             <View style={style.pendente}>
-
+                 
             </View>
         )
     }
