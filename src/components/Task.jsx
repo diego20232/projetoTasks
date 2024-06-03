@@ -1,7 +1,9 @@
 import React from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, TouchableWithoutFeedback } from "react-native";
+
 import estilo from "../screens/estilo";
 import Icon from 'react-native-vector-icons/FontAwesome';
+
 import moment from "moment";
 import 'moment/locale/pt-br'
 
@@ -17,9 +19,13 @@ export default props => {
 
     return (
         <View style={style.container}>
+            <TouchableWithoutFeedback
+            onPress={() => props.toggleTask(props.id)}
+            >
             <View style={style.checkContainer}>
                 {getCheckView(props.concluidaEm)}
             </View>
+            </TouchableWithoutFeedback>
 
                 <View>
                 <Text style={[style.descricao, tarefaConcluidaNao]}>{props.descricao}</Text>
@@ -31,13 +37,13 @@ export default props => {
     )
 }
 function getCheckView(concluidaEm) {
-    if (concluidaEm != false) {
+    if (concluidaEm != null) {
         return (
             <View style={style.dataEstimada}>
                 <Icon name='check' size={20} color='black'/>
             </View>
         )
-    } else { (concluidaEm != true)
+    } else { 
         return (
             <View style={style.pendente}>
                  
