@@ -1,7 +1,7 @@
 import React from "react";
 import { View, Text, StyleSheet, TouchableWithoutFeedback } from "react-native";
 
-import estilo from "../screens/estilo";
+import estilo from "../estilo";
 import Icon from 'react-native-vector-icons/FontAwesome';
 
 import moment from "moment";

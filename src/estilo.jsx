@@ -1,7 +1,8 @@
 export default {
-    fontFamily: 'Rowdies-Bold',
+    fontFamily: 'Arial',
     colors: {
-        secundary: '#fff',
+        today: '#B13B44',
+        secundary: '#FFF',
         mainText: '#222',
         subText: '#555'
     }
